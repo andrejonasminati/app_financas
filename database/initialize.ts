@@ -4,6 +4,7 @@ export async function initializeDatabase(db: SQLiteDatabase) {
   try {
     await db.execAsync(`
       PRAGMA journal_mode = WAL;
+      PRAGMA foreign_keys = ON;
       
       CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -39,6 +40,15 @@ export async function initializeDatabase(db: SQLiteDatabase) {
         key TEXT PRIMARY KEY,
         value TEXT
       );
+
+      /* Índices para alta performance de consultas por data, visibilidade e chaves estrangeiras */
+      CREATE INDEX IF NOT EXISTS idx_expenses_date_visible ON expenses(date, visible);
+      CREATE INDEX IF NOT EXISTS idx_expenses_gasto ON expenses(gasto_id);
+      CREATE INDEX IF NOT EXISTS idx_expenses_origem ON expenses(origem_id);
+      CREATE INDEX IF NOT EXISTS idx_expenses_pagamento ON expenses(pagamento_id);
+      CREATE INDEX IF NOT EXISTS idx_categories_type_visible ON categories(type, visible);
+
+      PRAGMA optimize;
     `);
 
     // Adicionar colunas se elas não existirem (para o caso de tabelas já criadas)
