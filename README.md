@@ -1,57 +1,80 @@
-# 💰 Meus Gastos - Controle Financeiro Pessoal
+# Meus Gastos - Controle Financeiro Pessoal
 
-> **Meus Gastos** é um aplicativo mobile simples, rápido e *offline-first* para controle de finanças pessoais. Desenvolvido com **React Native**, **Expo** e **SQLite**, o app permite organizar suas despesas com um exclusivo sistema de **Tripla Categorização** (Gasto, Origem do Dinheiro e Tipo de Pagamento).
+**Meus Gastos** é um aplicativo mobile simples, rápido e *offline-first* para controle de finanças pessoais. Desenvolvido com React Native, Expo e SQLite, o app permite organizar suas despesas através de um sistema de **Tripla Categorização** (Gasto, Origem do Dinheiro e Tipo de Pagamento).
 
 ---
 
-## 📱 Para Usuários: Como Baixar e Usar no Celular (APK)
+## Primeiros Passos e Acesso Inicial
 
-Se você quer apenas instalar e usar o aplicativo no seu smartphone Android sem precisar mexer em código:
+### Credenciais de Acesso Padrão
+Ao abrir o aplicativo pela primeira vez, utilize as credenciais padrão:
+
+- **Usuário:** `Admin`
+- **Senha:** `123`
+
+> **Como alterar sua senha:** Clique no ícone de engrenagem no canto superior direito para acessar a tela de **Configurações**. Nela, você poderá alterar a senha do usuário para garantir a segurança dos seus dados.
+
+---
+
+## Configuração Inicial das Categorias
+
+Para realizar lançamentos de forma organizada, o sistema utiliza o conceito de **Tripla Categorização**. Antes de registrar suas despesas, acesse **Configurações > Gerenciar Categorias** para adaptar ou criar as categorias conforme sua rotina financeira.
+
+Cada gasto registrado precisa estar vinculado a três dimensões:
+
+1. **Subcategoria de Gasto (O que está sendo comprado):**
+   - Refere-se à finalidade do consumo.
+   - *Exemplos:* Alimentação, Mercado, Moradia, Saúde, Locomoção, Lazer.
+
+2. **Origem do Dinheiro (De onde sai o recurso):**
+   - Refere-se à conta ou carteira de onde o dinheiro é retirado.
+   - *Exemplos:* Banco Sicredi, Mercado Pago, Conta Corrente, Carteira / Dinheiro Físico.
+
+3. **Tipo de Pagamento (Como a transação é realizada):**
+   - Refere-se à forma ou instrumento utilizado para efetuar o pagamento.
+   - *Exemplos:* Pix, Cartão de Crédito, Cartão de Débito, Dinheiro.
+
+---
+
+## Para Usuários: Como Baixar e Instalar o APK
+
+Se você deseja apenas utilizar o aplicativo em seu dispositivo Android:
 
 ### 1. Download do Aplicativo
-- Acesse a aba de **[Releases](https://github.com/andrejonasminati/app_financas/releases)** no GitHub.
-- Baixe o arquivo mais recente com a extensão `.apk` (ex: `MeusGastos.apk`).
+- Acesse a seção de **[Releases](https://github.com/andrejonasminati/app_financas/releases)** no repositório GitHub.
+- Baixe o arquivo de instalação com extensão `.apk` (ex: `MeusGastos.apk`).
 
-### 2. Passo a Passo para Instalar no Android
-1. Após concluir o download, abra o arquivo `.apk` no seu celular.
-2. Caso seja exibido um aviso do sistema, ative a opção **"Permitir desta fonte"** ou **"Instalar aplicativos de fontes desconhecidas"**.
+### 2. Instalação no Android
+1. Abra o arquivo `.apk` baixado em seu dispositivo.
+2. Caso o sistema solicite confirmação, habilite a permissão **"Permitir desta fonte"** ou **"Instalar aplicativos desconhecidos"**.
 3. Confirme a instalação e abra o aplicativo **Meus Gastos**.
-4. Pronto! Seus dados ficarão salvos **100% no seu próprio celular** (sem necessidade de internet).
+4. Todos os seus dados serão armazenados **100% localmente** em seu próprio aparelho.
 
 ---
 
-## ✨ Principais Funcionalidades
+## Principais Funcionalidades
 
-- 🎯 **Tripla Categorização Exclusiva:**
-  - **Subcategoria de Gasto:** O que foi comprado (*ex: Alimentação, Mercado, Moradia, Saúde*).
-  - **Origem do Dinheiro:** De onde saiu o recurso (*ex: Banco Sicredi, Mercado Pago, Dinheiro em mãos*).
-  - **Tipo de Pagamento:** Como a transação foi realizada (*ex: Pix, Cartão de Crédito, Débito, Dinheiro*).
-- 📅 **Filtros Flexíveis por Período:**
-  - Mês Atual, Mês Específico, Intervalo Personalizado de Meses, Trimestre, Semestre e Ano.
-- 📊 **Relatórios & Ranking por Categoria/Origem:**
-  - Visualize o valor total gasto, média diária, a top categoria do mês e o percentual de cada gasto.
-- 🔍 **Detalhamento por Categoria:**
-  - Toque em qualquer categoria para listar apenas os gastos daquele período selecionado.
-- 🗑️ **Lixeira Inteligente (Soft Delete):**
-  - Excluiu um gasto por engano? Restaure facilmente na aba Lixeira ou remova definitivamente.
-- 🇧🇷 **Padrão Brasileiro (BRL):**
-  - Valores formatados em reais (`R$ 1.250,50`) e datas no formato `DD/MM/AAAA`.
-- 🌙 **Modo Claro / Modo Escuro:**
-  - Adapta-se automaticamente ao tema do seu dispositivo.
+- **Tripla Categorização:** Registro completo associando Gasto, Origem e Tipo de Pagamento.
+- **Filtros por Período:** Consulta por Mês Atual, Mês Específico, Intervalo de Meses, Trimestre, Semestre e Ano.
+- **Relatórios por Categoria e Origem:** Resumos com total gasto, média diária e distribuição percentual.
+- **Detalhamento por Categoria:** Clique em qualquer categoria no relatório para visualizar os lançamentos individuais do período selecionado.
+- **Lixeira (Soft Delete):** Itens excluídos vão para a lixeira, permitindo restauração ou exclusão definitiva.
+- **Formatação no Padrão Brasileiro:** Moeda exibida em reais (`R$ 1.250,50`) e datas no formato `DD/MM/AAAA`.
+- **Suporte a Tema Escuro e Claro:** Ajuste automático conforme as preferências do dispositivo.
 
 ---
 
-## 💻 Para Desenvolvedores: Como Modificar e Rodar o Projeto
+## Para Desenvolvedores: Como Modificar e Executar o Projeto
 
-Se você é desenvolvedor e quer contribuir, personalizar ou criar sua própria versão do aplicativo:
+Se você deseja personalizar, estender ou contribuir com o código-fonte:
 
-### 🛠️ Pré-requisitos
+### Pré-requisitos
 - **Node.js** (versão 18 ou superior)
 - **npm** ou **yarn**
 - **Git**
-- Aplicativo **Expo Go** instalado no seu celular (Android ou iOS) para testar
+- Aplicativo **Expo Go** instalado no celular (Android ou iOS) para testes
 
-### 🚀 Rodando o Projeto Localmente
+### Execução Local
 
 1. **Clone o repositório:**
    ```bash
@@ -64,41 +87,40 @@ Se você é desenvolvedor e quer contribuir, personalizar ou criar sua própria 
    npm install
    ```
 
-3. **Inicie o servidor de desenvolvimento do Expo:**
+3. **Inicie o servidor do Expo:**
    ```bash
    npx expo start --go
    ```
 
 4. **Testando no dispositivo:**
-   - Abra o **Expo Go** no seu celular.
-   - Escaneie o **QR Code** exibido no seu terminal (ou insira o endereço `exp://<SEU_IP>:8081`).
+   - Abra o **Expo Go** no celular.
+   - Escaneie o **QR Code** gerado no terminal.
 
 ---
 
-## 📁 Estrutura de Pastas do Projeto
+## Estrutura de Pastas
 
 ```text
 finance control/
 ├── app/                      # Telas e Rotas (Expo Router)
 │   ├── (tabs)/               # Abas principais (Listagem e Relatório)
-│   ├── category-expenses.tsx # Tela de Detalhes da Categoria
-│   ├── configuracoes.tsx     # Tela de Ajustes do App
+│   ├── category-expenses.tsx # Detalhes da Categoria
+│   ├── configuracoes.tsx     # Configurações do App e Alteração de Senha
 │   ├── edicao.tsx            # Gerenciamento de Categorias
-│   ├── modal.tsx             # Formulário de Adicionar/Editar Gasto
+│   ├── modal.tsx             # Inserção e Edição de Gastos
 │   └── trash.tsx             # Lixeira de Itens Excluídos
 ├── assets/                   # Ícones, imagens e splash screen
-├── database/                 # Inicialização do banco SQLite (WAL mode + Indexes)
+├── database/                 # Inicialização do banco SQLite (WAL mode + Índices)
 ├── context/                  # Contextos globais (Tema e Autenticação)
-├── hooks/                    # Custom hooks (Cores e Temas)
+├── hooks/                    # Hooks de tema e cores
 └── utils/                    # Formatadores (Moeda BRL e Data DD/MM/AAAA)
 ```
 
 ---
 
-## 📄 Licença
+## Licença
 
-Este projeto é de código aberto e está disponível para estudos, modificações e melhorias. Sinta-se à vontade para fazer um **fork** e contribuir!
+Este projeto é de código aberto e está disponível para estudos, modificações e contribuições.
 
----
+<p align="center">Desenvolvido com React Native & Expo</p>
 
-<p align="center">Desenvolvido com ❤️ usando React Native & Expo</p>
