@@ -7,6 +7,8 @@ import { ThemedText } from '@/components/themed-text';
 import { useThemeColor } from '@/hooks/use-theme-color';
 import { Picker } from '@react-native-picker/picker';
 
+import { formatCurrency, formatDateBR } from '@/utils/formatters';
+
 interface Expense {
   id: number;
   description: string;
@@ -84,9 +86,9 @@ export default function ListagemScreen() {
           {' • '}
           <ThemedText>{item.pagamento_name || 'Sem pagto'}</ThemedText>
         </ThemedText>
-        <ThemedText style={styles.date}>{item.date}</ThemedText>
+        <ThemedText style={styles.date}>{formatDateBR(item.date)}</ThemedText>
       </View>
-      <ThemedText style={styles.amount} type="defaultSemiBold">R$ {item.amount.toFixed(2)}</ThemedText>
+      <ThemedText style={styles.amount} type="defaultSemiBold">{formatCurrency(item.amount)}</ThemedText>
     </TouchableOpacity>
   );
 

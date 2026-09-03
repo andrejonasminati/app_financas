@@ -8,6 +8,8 @@ import { Picker } from '@react-native-picker/picker';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { useThemeColor } from '@/hooks/use-theme-color';
 
+import { formatCurrency } from '@/utils/formatters';
+
 interface CategorySummary {
   category_id: number;
   category_name: string;
@@ -300,11 +302,11 @@ export default function RelatorioScreen() {
       <View style={styles.statsContainer}>
         <View style={[styles.statCard, { backgroundColor: cardColor }]}>
           <ThemedText style={styles.statLabel}>Total Gasto</ThemedText>
-          <ThemedText style={[styles.statValue, { color: primaryColor }]} type="defaultSemiBold">R$ {totalExpenses.toFixed(0)}</ThemedText>
+          <ThemedText style={[styles.statValue, { color: primaryColor }]} type="defaultSemiBold">{formatCurrency(totalExpenses)}</ThemedText>
         </View>
         <View style={[styles.statCard, { backgroundColor: cardColor }]}>
           <ThemedText style={styles.statLabel}>Média Diária</ThemedText>
-          <ThemedText style={[styles.statValue, { color: primaryColor }]} type="defaultSemiBold">R$ {dailyAverage.toFixed(0)}</ThemedText>
+          <ThemedText style={[styles.statValue, { color: primaryColor }]} type="defaultSemiBold">{formatCurrency(dailyAverage)}</ThemedText>
         </View>
         <View style={[styles.statCard, { backgroundColor: cardColor }]}>
           <ThemedText style={styles.statLabel}>Top Categoria</ThemedText>
@@ -326,7 +328,7 @@ export default function RelatorioScreen() {
             >
               <View style={styles.categoryInfo}>
                 <ThemedText style={[styles.categoryName, { color: primaryColor }]} type="defaultSemiBold">{item.category_name}</ThemedText>
-                <ThemedText style={styles.categoryAmount} type="defaultSemiBold">R$ {item.total_amount.toFixed(2)}</ThemedText>
+                <ThemedText style={styles.categoryAmount} type="defaultSemiBold">{formatCurrency(item.total_amount)}</ThemedText>
               </View>
               <View style={[styles.progressBarBackground, { backgroundColor: borderColor }]}>
                 <View

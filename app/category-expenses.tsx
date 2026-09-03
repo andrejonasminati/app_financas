@@ -5,6 +5,7 @@ import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
 import { ThemedView } from '@/components/themed-view';
 import { ThemedText } from '@/components/themed-text';
 import { useThemeColor } from '@/hooks/use-theme-color';
+import { formatCurrency, formatDateBR } from '@/utils/formatters';
 
 interface Expense {
   id: number;
@@ -147,9 +148,9 @@ export default function CategoryExpensesScreen() {
           {' • '}
           {item.pagamento_name || 'Sem pagto'}
         </ThemedText>
-        <ThemedText style={styles.date}>{item.date}</ThemedText>
+        <ThemedText style={styles.date}>{formatDateBR(item.date)}</ThemedText>
       </View>
-      <ThemedText style={styles.amount}>R$ {item.amount.toFixed(2)}</ThemedText>
+      <ThemedText style={styles.amount}>{formatCurrency(item.amount)}</ThemedText>
     </TouchableOpacity>
   );
 
@@ -165,7 +166,7 @@ export default function CategoryExpensesScreen() {
           <ThemedText style={styles.countText}>{expenses.length} registros</ThemedText>
         </View>
         <ThemedText style={[styles.amount, { color: primaryColor }]}>
-          Total: R$ {totalAmount.toFixed(2)}
+          Total: {formatCurrency(totalAmount)}
         </ThemedText>
       </View>
 

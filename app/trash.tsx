@@ -6,6 +6,7 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { ThemedView } from '@/components/themed-view';
 import { ThemedText } from '@/components/themed-text';
 import { useThemeColor } from '@/hooks/use-theme-color';
+import { formatCurrency } from '@/utils/formatters';
 
 export default function TrashScreen() {
   const [deletedCategories, setDeletedCategories] = useState<any[]>([]);
@@ -123,7 +124,7 @@ export default function TrashScreen() {
       <View style={styles.itemInfo}>
         <ThemedText style={styles.itemName}>{item.description}</ThemedText>
         <ThemedText style={styles.itemDetail}>
-          R$ {item.amount.toFixed(2)} • {item.category_name || 'Sem categoria'}
+          {formatCurrency(item.amount)} • {item.category_name || 'Sem categoria'}
         </ThemedText>
       </View>
       <View style={styles.actions}>

@@ -183,7 +183,7 @@ export default function ExpenseModalScreen() {
               <ThemedText style={[styles.label, { color: primaryColor }]}>Valor (R$)</ThemedText>
               <TextInput
                 style={[styles.input, { backgroundColor: cardColor, borderColor, color: textColor }]}
-                placeholder="0.00"
+                placeholder="0,00"
                 placeholderTextColor={iconColor}
                 value={amount}
                 onChangeText={setAmount}
