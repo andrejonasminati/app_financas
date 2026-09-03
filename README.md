@@ -3,6 +3,21 @@
 **Meus Gastos** é um aplicativo mobile simples, rápido e *offline-first* para controle de finanças pessoais. Desenvolvido com React Native, Expo e SQLite, o app permite organizar suas despesas através de um sistema de **Tripla Categorização** (Gasto, Origem do Dinheiro e Tipo de Pagamento).
 
 ---
+## Para Usuários: Como Baixar e Instalar o APK
+
+Se você deseja apenas utilizar o aplicativo em seu dispositivo Android:
+
+### 1. Download do Aplicativo
+- Acesse a seção de **[Releases](https://github.com/andrejonasminati/app_financas/releases)** no repositório GitHub.
+- Baixe o arquivo de instalação com extensão `.apk` (ex: `MeusGastos.apk`).
+
+### 2. Instalação no Android
+1. Abra o arquivo `.apk` baixado em seu dispositivo.
+2. Caso o sistema solicite confirmação, habilite a permissão **"Permitir desta fonte"** ou **"Instalar aplicativos desconhecidos"**.
+3. Confirme a instalação e abra o aplicativo **Meus Gastos**.
+4. Todos os seus dados serão armazenados **100% localmente** em seu próprio aparelho.
+
+---
 
 ## Primeiros Passos e Acesso Inicial
 
@@ -36,21 +51,7 @@ Cada gasto registrado precisa estar vinculado a três dimensões:
 
 ---
 
-## Para Usuários: Como Baixar e Instalar o APK
 
-Se você deseja apenas utilizar o aplicativo em seu dispositivo Android:
-
-### 1. Download do Aplicativo
-- Acesse a seção de **[Releases](https://github.com/andrejonasminati/app_financas/releases)** no repositório GitHub.
-- Baixe o arquivo de instalação com extensão `.apk` (ex: `MeusGastos.apk`).
-
-### 2. Instalação no Android
-1. Abra o arquivo `.apk` baixado em seu dispositivo.
-2. Caso o sistema solicite confirmação, habilite a permissão **"Permitir desta fonte"** ou **"Instalar aplicativos desconhecidos"**.
-3. Confirme a instalação e abra o aplicativo **Meus Gastos**.
-4. Todos os seus dados serão armazenados **100% localmente** em seu próprio aparelho.
-
----
 
 ## Principais Funcionalidades
 
