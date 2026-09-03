@@ -161,7 +161,13 @@ export default function RelatorioScreen() {
         categoryId: category.category_id, 
         categoryName: category.category_name,
         filter: selectedFilter,
-        groupBy: groupBy
+        groupBy: groupBy,
+        specificMonth: specificMonth,
+        specificYear: specificYear,
+        startMonth: startMonth,
+        startYear: startYear,
+        endMonth: endMonth,
+        endYear: endYear
       }
     });
   };

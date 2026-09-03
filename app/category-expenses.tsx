@@ -16,8 +16,24 @@ interface Expense {
   pagamento_name: string;
 }
 
+const FULL_MONTHS = [
+  'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+];
+
 export default function CategoryExpensesScreen() {
-  const { categoryId, categoryName, filter, groupBy } = useLocalSearchParams();
+  const {
+    categoryId,
+    categoryName,
+    filter,
+    groupBy,
+    specificMonth,
+    specificYear,
+    startMonth,
+    startYear,
+    endMonth,
+    endYear
+  } = useLocalSearchParams();
   const db = useSQLiteContext();
   const router = useRouter();
   const [expenses, setExpenses] = useState<Expense[]>([]);
@@ -39,6 +55,19 @@ export default function CategoryExpensesScreen() {
       case 'MONTH':
         const monthStr = String(month + 1).padStart(2, '0');
         return `${baseFilter} AND strftime('%Y-%m', e.date) = '${year}-${monthStr}'`;
+      case 'SPECIFIC_MONTH':
+        const specM = Number(specificMonth ?? month);
+        const specY = Number(specificYear ?? year);
+        const specMonthStr = String(specM + 1).padStart(2, '0');
+        return `${baseFilter} AND strftime('%Y-%m', e.date) = '${specY}-${specMonthStr}'`;
+      case 'RANGE':
+        const sM = Number(startMonth ?? 0);
+        const sY = Number(startYear ?? year);
+        const eM = Number(endMonth ?? month);
+        const eY = Number(endYear ?? year);
+        const sMonthStr = String(sM + 1).padStart(2, '0');
+        const eMonthStr = String(eM + 1).padStart(2, '0');
+        return `${baseFilter} AND e.date >= '${sY}-${sMonthStr}-01' AND e.date <= '${eY}-${eMonthStr}-31'`;
       case 'QUARTER':
         const quarterStartMonth = Math.floor(month / 3) * 3 + 1;
         const qStart = `${year}-${String(quarterStartMonth).padStart(2, '0')}-01`;
@@ -53,7 +82,35 @@ export default function CategoryExpensesScreen() {
       default:
         return baseFilter;
     }
-  }, [filter]);
+  }, [filter, specificMonth, specificYear, startMonth, startYear, endMonth, endYear]);
+
+  const periodLabel = useMemo(() => {
+    switch (filter) {
+      case 'MONTH':
+        return 'Mês Atual';
+      case 'SPECIFIC_MONTH':
+        const mIdx = Number(specificMonth ?? 0);
+        const yVal = specificYear ?? new Date().getFullYear();
+        return `${FULL_MONTHS[mIdx] || ''} / ${yVal}`;
+      case 'RANGE':
+        const smIdx = Number(startMonth ?? 0);
+        const emIdx = Number(endMonth ?? 0);
+        return `${FULL_MONTHS[smIdx]?.substring(0, 3)}/${startYear} a ${FULL_MONTHS[emIdx]?.substring(0, 3)}/${endYear}`;
+      case 'QUARTER':
+        return 'Trimestre Atual';
+      case 'SEMESTER':
+        return 'Semestre Atual';
+      case 'YEAR':
+        return 'Ano Atual';
+      case 'ALL':
+      default:
+        return 'Todo o Período';
+    }
+  }, [filter, specificMonth, specificYear, startMonth, startYear, endMonth, endYear]);
+
+  const totalAmount = useMemo(() => {
+    return expenses.reduce((acc, curr) => acc + (curr.amount || 0), 0);
+  }, [expenses]);
 
   const fetchExpenses = useCallback(async () => {
     const filterField = groupBy === 'ORIGIN' ? 'e.origem_id' : 'e.gasto_id';
@@ -101,14 +158,15 @@ export default function CategoryExpensesScreen() {
       <Stack.Screen options={{ title: categoryName as string }} />
       
       <View style={[styles.headerInfo, { backgroundColor: cardColor, borderBottomColor: borderColor }]}>
-        <ThemedText style={[styles.periodText, { color: primaryColor }]}>
-          {filter === 'MONTH' && 'Mês Atual'}
-          {filter === 'QUARTER' && 'Trimestre Atual'}
-          {filter === 'SEMESTER' && 'Semestre Atual'}
-          {filter === 'YEAR' && 'Ano Atual'}
-          {filter === 'ALL' && 'Todo o Período'}
+        <View>
+          <ThemedText style={[styles.periodText, { color: primaryColor }]}>
+            {periodLabel}
+          </ThemedText>
+          <ThemedText style={styles.countText}>{expenses.length} registros</ThemedText>
+        </View>
+        <ThemedText style={[styles.amount, { color: primaryColor }]}>
+          Total: R$ {totalAmount.toFixed(2)}
         </ThemedText>
-        <ThemedText style={styles.countText}>{expenses.length} registros encontrados</ThemedText>
       </View>
 
       <FlatList
