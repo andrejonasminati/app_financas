@@ -10,7 +10,6 @@ import { ThemedText } from '@/components/themed-text';
 
 import ListagemScreen from './index';
 import RelatorioScreen from './explore';
-import ChartsScreen from './charts';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -22,7 +21,7 @@ export default function TabLayout() {
   return (
     <View style={{ flex: 1, backgroundColor: themeColors.primary }}>
       <View style={[styles.header, { backgroundColor: themeColors.primary }]}>
-        <ThemedText style={styles.headerTitle}>Finance Control</ThemedText>
+        <ThemedText style={styles.headerTitle}>Meus Gastos</ThemedText>
         <View style={styles.headerActions}>
           <TouchableOpacity 
             onPress={() => router.push('/configuracoes')}
@@ -62,11 +61,6 @@ export default function TabLayout() {
           name="explore" 
           component={RelatorioScreen} 
           options={{ title: 'Relatório' }}
-        />
-        <Tab.Screen 
-          name="charts" 
-          component={ChartsScreen} 
-          options={{ title: 'Gráficos' }}
         />
       </Tab.Navigator>
     </View>

@@ -436,25 +436,6 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 15,
   },
-  chartsButton: {
-    flexDirection: 'row',
-    marginHorizontal: 20,
-    marginTop: 10,
-    padding: 15,
-    borderRadius: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 10,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-  },
-  chartsButtonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-  },
   innerContainer: {
     paddingHorizontal: 20,
   },
